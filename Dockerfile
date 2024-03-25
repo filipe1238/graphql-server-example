@@ -38,4 +38,4 @@ COPY --from=build /app/dist ./dist
 EXPOSE 80
 
 # Command to start the server on port 80
-CMD ["node", "./dist/server.js"]
+CMD ["node", "./dist/index.js"]
