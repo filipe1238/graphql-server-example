@@ -6,7 +6,6 @@ WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
-COPY src/static ./index.html
 
 # Install production dependencies only
 RUN npm install --production
@@ -20,14 +19,23 @@ COPY . .
 # Build the application
 RUN npm run build
 
-
 # ---- Production image ----
 FROM node:lts-alpine AS production
 
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Install production dependencies only
+RUN npm install --production
+
+# Copy built application from the build stage
 COPY --from=build /app/dist ./dist
 
-# Expose the port the application runs on
+# Expose port 80 for HTTP traffic
 EXPOSE 80
 
-# Serve the application
+# Command to start the server on port 80
 CMD ["node", "./dist/index.js"]
