@@ -16,7 +16,7 @@ COPY . .
 RUN npm run build
 
 # Expose port 80 for HTTP traffic
-EXPOSE 3000
+EXPOSE 10000
 
 # Command to start the server on port 80
 CMD ["node", "./dist/index.js"]
