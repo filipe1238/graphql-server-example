@@ -28,6 +28,9 @@ WORKDIR /app
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
+# Copy the static html files
+COPY src/static ./
+
 # Install production dependencies only
 RUN npm install --production
 
