@@ -21,9 +21,9 @@
     <input id="input" autocomplete="off" /><button>Send</button>
 </form>
 
-<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
 <script>
-    var socket = io('http://localhost:3000');
+    var socket = io('http://graphql-server-example-5pid.onrender.com');
     var form = document.getElementById('form');
     var input = document.getElementById('input');
 
