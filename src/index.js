@@ -6,14 +6,13 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 var cors = require('cors');
 
-app.use(cors());
+
+app.use(cors({
+    origin: 'https://graphql-server-example-5pid.onrender.com/',
+}));
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/static/index.html');
-});
-
-app.get('/hello', (req, res) => {
-    res.send('Hello World');
 });
 
 io.on("connection", (socket) => {
