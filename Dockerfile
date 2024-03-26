@@ -35,11 +35,11 @@ RUN npm install --production
 
 RUN npm run build
 
-# Copy built application from the build stage
-COPY --from=build /app/dist ./dist
+# Copy the built application to the working directory
+COPY . .
 
-# Expose port 80 for HTTP traffic
+# Expose the port the application runs on
 EXPOSE 80
 
-# Command to start the server on port 80
+# Serve the application
 CMD ["node", "./dist/index.js"]
